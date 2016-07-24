@@ -60,12 +60,24 @@ var tooHungryDay;
    meals)
   */
 
-use .reduce to combine numbers in mealsPerDay,
-and then divide that number by the number of days combined
-print out the avg. number of meals per day so far.
-increase number of days by 1.
-when that number is < 4,
-print number of days,
+function whenDoesTheLionWantProtein() {
+  var totalMeals = 0;
+  mealsPerDay.reduce(function(accumulator, current, index) {
+    var days = index + 1;
+    totalMeals += current;
+    accumulator[days] = (totalMeals / days);
+    console.log('Day #', days, '- Avg. number of meals:', ((totalMeals / days).toFixed(1)));
+    return accumulator;
+  }, {});
+};
+
+// use .reduce to combine numbers in mealsPerDay,
+// and then divide that number by the number of days combined
+// print out the avg. number of meals per day so far.
+// print number of days,
+
+// use .findIndex to get the index of the day when the avg meals is < 4.
+// return that index -1 (number of days *before* the lion got hungry.)
 
 
 expect(
