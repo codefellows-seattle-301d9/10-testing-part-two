@@ -60,6 +60,13 @@ var tooHungryDay;
    meals)
   */
 
+use .reduce to combine numbers in mealsPerDay,
+and then divide that number by the number of days combined
+print out the avg. number of meals per day so far.
+increase number of days by 1.
+when that number is < 4,
+print number of days,
+
 
 expect(
   typeof(tooHungryDay) === 'number',
@@ -70,3 +77,9 @@ expect(
   // Write a second test expecting that tooHungryDay falls within an acceptable answer
   // based on the number of days available in the array. Remember to:
   // pass in your expression, and write a failure and a success message.
+
+expect(
+  tooHungryDay <= 10,
+  'FAILURE! That\'s too many days! The array is only 10 days long!',
+  'Success! The lion is too hungry after day ' + tooHungryDay + ', which is within the array of 10 days.'
+)
