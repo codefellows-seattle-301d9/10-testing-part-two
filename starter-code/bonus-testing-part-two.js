@@ -85,6 +85,6 @@ expect(
   // pass in your expression, and write a failure and a success message.
 
 expect(
-  tooHungryDay <= 10,
-  'FAILURE! The result should be a number between 1 and 10.',
+  tooHungryDay <= mealsPerDay.length,
+  'FAILURE! The result should be a number between 1 and ' + mealsPerDay.length + '.',
   'Success! The lion is too hungry after day ' + tooHungryDay + ', and tries to eat his trainer.');
