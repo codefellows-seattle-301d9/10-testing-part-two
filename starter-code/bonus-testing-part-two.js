@@ -49,10 +49,10 @@ expect(
 
   // number of times the new caretaker fed the lion. one array entry per day
 var mealsPerDay = [5, 4, 3, 6, 2, 4, 3, 4, 5, 1];
-var tooHungryDay;
+var tooHungryDay = whenDoesTheLionWantProtein();
 
   /*
-   TODO:
+   DONE:
    Cycle through the days in mealsPerDay. At each day, print out the average
    number of meals/day the lion got since the new caretaker started.
    tooHungryDay should receive the number of days before the lion started
@@ -62,36 +62,29 @@ var tooHungryDay;
 
 function whenDoesTheLionWantProtein() {
   var totalMeals = 0;
-  mealsPerDay.reduce(function(accumulator, current, index) {
+  var hungryDay = mealsPerDay.reduce(function(accumulator, current, index) {
     var days = index + 1;
     totalMeals += current;
     accumulator[days] = (totalMeals / days);
     console.log('Day #', days, '- Avg. number of meals:', ((totalMeals / days).toFixed(1)));
     return accumulator;
-  }, {});
+  }, []).findIndex(function(element) {
+    return element < 4;
+  });
+  return hungryDay;
 };
-
-// use .reduce to combine numbers in mealsPerDay,
-// and then divide that number by the number of days combined
-// print out the avg. number of meals per day so far.
-// print number of days,
-
-// use .findIndex to get the index of the day when the avg meals is < 4.
-// return that index -1 (number of days *before* the lion got hungry.)
-
 
 expect(
   typeof(tooHungryDay) === 'number',
   'tooHungryDay should be a number but instead is a data type of ' + typeof(tooHungryDay),
   'The lion appears to be too hungry after ' + tooHungryDay + ' days...');
 
-  // TODO:
+  // DONE:
   // Write a second test expecting that tooHungryDay falls within an acceptable answer
   // based on the number of days available in the array. Remember to:
   // pass in your expression, and write a failure and a success message.
 
 expect(
   tooHungryDay <= 10,
-  'FAILURE! That\'s too many days! The array is only 10 days long!',
-  'Success! The lion is too hungry after day ' + tooHungryDay + ', which is within the array of 10 days.'
-)
+  'FAILURE! The result should be a number between 1 and 10.',
+  'Success! The lion is too hungry after day ' + tooHungryDay + ', and tries to eat his trainer.');
