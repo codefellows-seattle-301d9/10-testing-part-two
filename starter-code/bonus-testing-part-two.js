@@ -25,12 +25,12 @@ function expect(expression, failureMessage, successMessage) {
     to see what happens when it fails, and change `ricksFaveAnimal`
     to get it to pass!
 */
-var ricksFaveAnimal = 'hyena';
-
-expect(
-  ricksFaveAnimal === 'penguin',
-  'ricksFavoriteAnimal should equal penguin, but currently equals ' + ricksFaveAnimal,
-  'ricksFavoriteAnimal equals penguin!');
+// var ricksFaveAnimal = 'hyena';
+//
+// expect(
+//   ricksFaveAnimal === 'penguin',
+//   'ricksFavoriteAnimal should equal penguin, but currently equals ' + ricksFaveAnimal,
+//   'ricksFavoriteAnimal equals penguin!');
 
   // BEGIN WORK BELOW - test code by running `node bonus-testing-part-two.js`
   //  in your terminal!
@@ -60,6 +60,15 @@ var tooHungryDay;
    meals)
   */
 
+var i = 0;
+var allMeals = 0;
+do {
+  allMeals = allMeals + mealsPerDay[i];
+  i = i + 1;
+  avg = allMeals / i;
+  console.log('on day: ' + i + ' the lion got an average of ' + avg + ' meals.');
+} while (avg >= 4);
+tooHungryDay = i;
 
 expect(
   typeof(tooHungryDay) === 'number',
@@ -70,3 +79,8 @@ expect(
   // Write a second test expecting that tooHungryDay falls within an acceptable answer
   // based on the number of days available in the array. Remember to:
   // pass in your expression, and write a failure and a success message.
+
+expect(
+  tooHungryDay <= mealsPerDay.length,
+  'tooHungryDay is: ' + tooHungryDay + ' and should be equal to or less than ' + mealsPerDay.length,
+  'The lion appears too hungry after ' + tooHungryDay + ' days...');
