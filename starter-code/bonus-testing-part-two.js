@@ -25,7 +25,7 @@ function expect(expression, failureMessage, successMessage) {
     to see what happens when it fails, and change `ricksFaveAnimal`
     to get it to pass!
 */
-var ricksFaveAnimal = 'hyena';
+var ricksFaveAnimal = 'penguin';
 
 expect(
   ricksFaveAnimal === 'penguin',
@@ -52,7 +52,7 @@ var mealsPerDay = [5, 4, 3, 6, 2, 4, 3, 4, 5, 1];
 var tooHungryDay;
 
   /*
-   TODO:
+   DONE:
    Cycle through the days in mealsPerDay. At each day, print out the average
    number of meals/day the lion got since the new caretaker started.
    tooHungryDay should receive the number of days before the lion started
@@ -60,13 +60,31 @@ var tooHungryDay;
    meals)
   */
 
+function calcTooHungryDay() {
+  var hungryDay = -1;
+  var sumMeals = 0;
+  for (var numDay = 0; numDay < mealsPerDay.length; numDay++) {
+    sumMeals += mealsPerDay[numDay];
+    console.log('Avg num of meals/day on Day ' + (numDay+1) + ' = ' + sumMeals/(numDay+1));
+    if (sumMeals/(numDay+1) < 4) {
+      hungryDay = numDay+1;
+      return hungryDay;
+    }
+  };
+};
 
+var tooHungryDay = calcTooHungryDay();
 expect(
   typeof(tooHungryDay) === 'number',
   'tooHungryDay should be a number but instead is a data type of ' + typeof(tooHungryDay),
   'The lion appears to be too hungry after ' + tooHungryDay + ' days...');
 
-  // TODO:
+  // DONE:
   // Write a second test expecting that tooHungryDay falls within an acceptable answer
   // based on the number of days available in the array. Remember to:
   // pass in your expression, and write a failure and a success message.
+  
+expect(
+    Number.isInteger(tooHungryDay) && ((tooHungryDay > 0) && (tooHungryDay < mealsPerDay.length)),
+    'tooHungryDay should be an **INTEGER** number from 1 to ' + (mealsPerDay.length) + ' instead is ' + tooHungryDay,
+    'The lion appears to have supplemented its diet after ' + tooHungryDay + ' days...');
